@@ -1,29 +1,13 @@
-# BrifAI - Intelligent Briefing Agent
-# Projeto Prático #01: Sistema de Briefings Personalizados
-
-## Descrição do Projeto
-Este projeto consiste em um sistema automatizado para a geração e distribuição de briefings de notícias personalizados. Desenvolvido em Python e orquestrado através do framework de agentes de IA Agno, o sistema permite que os usuários configurem suas preferências de conteúdo via Discord. Diariamente, de forma agendada, o sistema coleta notícias recentes, consolida as informações utilizando inteligência artificial e distribui o briefing final tanto no canal do Discord configurado quanto via e-mail.
-
-Este projeto foi desenvolvido como requisito acadêmico para o curso de Engenharia de Software da Universidade Federal do Pampa (UNIPAMPA), com foco rigoroso em boas práticas de programação e arquitetura limpa.
-
-## Requisitos Funcionais Implementados
-1. **Coleta de Preferências (Discord):** Agente interativo para captura de tópicos, palavras-chave, limite de notícias, e-mail e ID do canal.
-2. **Busca Automatizada:** Integração com motores de busca para recuperação de notícias recentes com base nos parâmetros do usuário.
-3. **Geração de Conteúdo:** Consolidação e formatação do briefing estruturado utilizando o framework Agno.
-4. **Distribuição Agendada (Discord):** Envio automático da mensagem para o servidor correspondente no horário estipulado.
-5. **Distribuição via E-mail:** Disparo do briefing consolidado para o endereço de e-mail cadastrado.
-
-## Práticas de Engenharia de Software e Arquitetura
-
-O sistema foi projetado sob rigorosos padrões de qualidade, garantindo manutenibilidade e escalabilidade:
-
-* **Clean Code:** Código redigido integralmente em inglês, seguindo as diretrizes da PEP8. Variáveis, classes e funções possuem nomenclaturas descritivas. Tipagem estática (Type Hints) e docstrings foram aplicadas em todas as assinaturas.
-* **Limite de Complexidade:** Nenhuma função ou método do domínio da aplicação excede o limite estrito de 20 linhas de código.
-* **S.O.L.I.D. Principles:**
-  * **SRP (Single Responsibility Principle):** Serviços de e-mail, discord, busca de notícias e orquestração do agente estão isolados em suas respectivas classes.
-  * **OCP (Open/Closed Principle):** O sistema permite a adição de novos provedores de notícias ou métodos de notificação sem a necessidade de alterar a lógica principal.
-  * **ISP (Interface Segregation Principle):** Utilização de Classes Base Abstratas (ABCs) granulares.
-  * **DIP (Dependency Inversion Principle):** Os módulos de alto nível dependem exclusivamente de interfaces abstratas (ex: `INewsFetcher`, `IEmailSender`), com as implementações concretas injetadas em tempo de execução.
-
-## Estrutura de Diretórios
-
+🚀 BrifAI - Intelligent Briefing AgentBrifAI is an automated system designed to generate personalized news briefings and distribute them via Email and Discord using AI Agents. This project follows the Spec-Driven Development (SDD) methodology to ensure high-quality code and seamless integration between team members. 🛠️ Tech StackLanguage: Python 3.12+ Framework: Agno (AI Orchestration) Environment Manager: uv Key Libraries: discord.py, newsapi-python, apscheduler, smtplib. 📂 Project StructureFollowing the Clean Architecture and SOLID principles:Plaintextsrc/
+├── agent/            # M3: AI Agent logic (Agno) [cite: 421]
+├── bot/              # M2: Conversational onboarding (discord.py) [cite: 417]
+├── core/             # M1: Domain models (Dataclasses) [cite: 405]
+├── interfaces/       # M1: Abstract Base Classes (Contracts) [cite: 408]
+├── services/         # M4: Infrastructure (NewsAPI, SMTP, Scheduler) [cite: 425]
+├── storage/          # M1: Data persistence (JSON) [cite: 431]
+└── main.py           # M1: Dependency injection and entry point 
+⚙️ Setup & Installation1. PrerequisitesEnsure you have uv installed. If not, install it via PowerShell:PowerShellpowershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+2. ConfigurationClone the repository and navigate to the root folder.Create a .env file from the template:PowerShellcp .env.example .env
+Fill in your credentials: DISCORD_BOT_TOKEN, NEWS_API_KEY, and SMTP settings. 3. Install DependenciesPowerShelluv sync
+🚀 Running the ProjectTo start the system (Onboarding and Scheduler):PowerShelluv run python src/main.py
+🤖 Development Protocol (For the Team)All members must follow the Spec-Driven Development rules:English Only: All code, variables, and docs must be in English. 20-Line Rule: No method or function shall exceed 20 lines of code. DIP: Depend on abstractions (interfaces), never on concrete implementations. AI Usage: Always use the Base Prompt provided in the [Protocolo de Desenvolvimento PDF] before generating code.
